@@ -1,0 +1,2 @@
+You don't need to memorize SQL syntax just go to https://www.w3schools.com/sql/default.asp if you have any question
+
