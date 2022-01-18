@@ -1,2 +1,18 @@
-You don't need to memorize SQL syntax just go to https://www.w3schools.com/sql/default.asp if you have any questions
+## to connect to SQL server and create dataframe
+import pandas as pd
+import pyodbc
+
+sql_conn = pyodbc.connect('DRIVER={ODBC Driver 13 for SQL Server};
+                            SERVER=SQLSERVER2017;
+                            DATABASE=Adventureworks;
+                            Trusted_Connection=yes') 
+#sample query
+query = "SELECT [BusinessEntityID],[FirstName],[LastName],
+                 [PostalCode],[City] FROM [Sales].[vSalesPerson]"
+df = pd.read_sql(query, sql_conn)
+
+df.head(3)
+
+
+##You don't need to memorize SQL syntax just go to https://www.w3schools.com/sql/default.asp if you have any questions
 
