@@ -2,17 +2,29 @@
 import pandas as pd
 import pyodbc
 
+#server and DB names just as examples
+
 sql_conn = pyodbc.connect('DRIVER={ODBC Driver 13 for SQL Server};
                             SERVER=SQLSERVER2017;
                             DATABASE=Adventureworks;
                             Trusted_Connection=yes') 
-#sample query
+
+#sample query, select the columns you need from table 'sales'
+
 query = "SELECT [BusinessEntityID],[FirstName],[LastName],
-                 [PostalCode],[City] FROM [Sales].[vSalesPerson]"
+                 [PostalCode],[City] FROM [Sales]"
+                 
+#SQL query to dataframe
 df = pd.read_sql(query, sql_conn)
 
 df.head(3)
 
 
-##You don't need to memorize SQL syntax just go to https://www.w3schools.com/sql/default.asp if you have any questions
+#LEFT JOIN - for example if you had to add the Entity Name to your query
+#you can use the field [BusinessEntityID] and bring the column you need from a different table that contains both fields
 
+FROM table1
+LEFT JOIN table2(table with [BusinessEntityID] and Entity_Name)
+ON table1.[BusinessEntityID] = table2.[BusinessEntityID];
+
+##great resource for SQL syntax: to https://www.w3schools.com/sql/default.asp if you have any questions
